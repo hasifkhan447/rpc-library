@@ -34,7 +34,12 @@ typedef struct Call {
 
 
 // Call Encoder(); This is a macro. It needs to adapt to different types. I should just be able to call it and it'll be able to in place make a Call object 
-void Serialize(Call call, char* buffer); //set ret to be empty? So that you can pass it, then recieve it next.
-Call Deserialize(char* buffer); // parse the function_enum, args, etc into a call 
-void Dispatcher(Call call); // Call functions and deal with typecasting 
+void Serialize(const Call call, char* buffer); //set ret to be empty? So that you can pass it, then recieve it next.
+void Deserialize(const char* buffer, Call* call); // parse the function_enum, args, etc into a call 
+void Dispatcher(Call* call); // Call functions and deal with typecasting 
+
+
+
+
+
 
