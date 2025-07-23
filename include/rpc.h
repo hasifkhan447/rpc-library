@@ -9,22 +9,22 @@ typedef enum Command {
 
 
 typedef struct Args {
-  void* arg1;
-  void* arg2;
-  void* arg3;
+  float arg1;
+  float arg2;
+  float arg3;
 } Args;
 
 typedef struct Ret { 
-  void* arg1;
-  void* arg2;
-  void* arg3;
-  void* err;
+  float arg1;
+  float arg2;
+  float arg3;
+  int err;
 } Ret;
 
 typedef struct Call { 
   Command function_enum;
-  Args args;
-  Ret ret;
+  Args* args;
+  Ret* ret;
 } Call;
 
 // Call Encoder(); This is a macro. It needs to adapt to different types. I should just be able to call it and it'll be able to in place make a Call object 
