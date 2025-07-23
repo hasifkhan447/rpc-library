@@ -53,10 +53,10 @@ int main() {
   PrintSerialized(buffer_mcu);
   memcpy(buffer, buffer_mcu, sizeof(char[BUF_SIZE]));
 
-  // free(ret_mcu);
-  // free(args_mcu);
-  // free(call_mcu);
-  // free(buffer_mcu);
+  free(ret_mcu);
+  free(args_mcu);
+  free(call_mcu);
+  free(buffer_mcu);
 
 
 
@@ -67,15 +67,11 @@ int main() {
   Deserialize(buffer, call);
   printf("%d\n", call->ret->err);
 
+
   free(ret);
   free(args);
   free(call);
   free(buffer);
-
-  free(ret_mcu);
-  free(args_mcu);
-  free(call_mcu);
-  free(buffer_mcu);
 
 
 }
