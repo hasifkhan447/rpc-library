@@ -1,4 +1,4 @@
 test
-test_src/*
+test_src/main.o
 *.o
 *.a
