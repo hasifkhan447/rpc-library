@@ -8,7 +8,6 @@ typedef enum Command {
 } Command;
 
 
-
 typedef struct Args {
   void* arg1;
   void* arg2;
@@ -28,13 +27,8 @@ typedef struct Call {
   Ret ret;
 } Call;
 
-
-// as_int 
-// as_float 
-
-
 // Call Encoder(); This is a macro. It needs to adapt to different types. I should just be able to call it and it'll be able to in place make a Call object 
-void Serialize(const Call call, char* buffer); //set ret to be empty? So that you can pass it, then recieve it next.
+void Serialize(const Call* call, char* buffer); //set ret to be empty? So that you can pass it, then recieve it next.
 void Deserialize(const char* buffer, Call* call); // parse the function_enum, args, etc into a call 
 void Dispatcher(Call* call); // Call functions and deal with typecasting 
 

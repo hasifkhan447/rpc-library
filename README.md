@@ -21,6 +21,7 @@ Deserialize(buffer, call)
 Dispatcher(call)
 (append output to call)
 Serialize(call, buffer)
+free(everything inside ret)
 
 Nano: 
 Recieved response 

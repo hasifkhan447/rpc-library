@@ -5,6 +5,3 @@ int run_motor_fn(int motor_id, int pwm_frequency) {
   return 1;
 }
 
-int main() {
-
-}
