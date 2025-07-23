@@ -21,7 +21,8 @@ int main() {
   call->ret = ret;
 
   Serialize(call, buffer);
-  printf("Serialized: %s\n", buffer);
+  printf("Serialized:\n");
+  PrintSerialized(buffer);
 
   printf("Imagine I sent something to the MCU\n");
   printf("-------------------\n");
@@ -48,7 +49,8 @@ int main() {
 
   //This is a test
 
-  printf("Now I'm sending this to Nano: %s\n", buffer_mcu);
+  printf("Now I'm sending this to Nano:\n");
+  PrintSerialized(buffer_mcu);
   memcpy(buffer, buffer_mcu, sizeof(char[BUF_SIZE]));
 
   // free(ret_mcu);

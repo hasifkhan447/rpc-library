@@ -32,6 +32,8 @@ void Serialize(const Call* call, char* buffer); //set ret to be empty? So that y
 void Deserialize(const char* buffer, Call* call); // parse the function_enum, args, etc into a call 
 void Dispatcher(Call* call); // Call functions and deal with typecasting 
 
+void PrintSerialized(const char* buffer);
+
 
 
 

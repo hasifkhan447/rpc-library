@@ -1,10 +1,17 @@
 #include "../include/rpc.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 
 //TODO: Is there any way I can make generating this Serialize easier? So I don't have to make the Args and Ret together? Is there any macro I can make?
 
+
+void PrintSerialized(const char* buffer) {
+
+  printf("%d %f %f %f %f %f %f %d\n", *(Command*)buffer, *(float*)(buffer+32),*(float*)(buffer+64), *(float*)(buffer+96), *(float*)(buffer+128), *(float*)(buffer+164), *(float*)(buffer+192), *(int*)(buffer+224));
+
+}
 
 void Serialize(const Call* call, char* buffer) { // called on one side
   
@@ -24,19 +31,6 @@ void Serialize(const Call* call, char* buffer) { // called on one side
 }; //This needs to be serialized, then sent, and then freed
 
 void Deserialize(const char* buffer, Call *call) { // called on another side
-  // memcpy(&call->function_enum, buffer, sizeof(float));
-  //
-  // memcpy(&call->args->arg1, buffer+32, sizeof(float));
-  // memcpy(&call->args->arg2, buffer+64, sizeof(float));
-  // memcpy(&call->args->arg3, buffer+96, sizeof(float));
-  //
-  // memcpy(&call->ret->arg1, buffer+128, sizeof(float));
-  // memcpy(&call->ret->arg2, buffer+164, sizeof(float));
-  // memcpy(&call->ret->arg3, buffer+192, sizeof(float));
-  //
-  // memcpy(&call->ret->err, buffer+224, sizeof(float));
-
-
   call->function_enum = *(Command*)buffer; //typecast through *Command
   
   call->args->arg1 = *(float*)(buffer+32);
