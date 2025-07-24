@@ -12,7 +12,6 @@
 //   printf("%d %f %f %f %f %f %f %d\n", *(Command*)buffer, *(float*)(buffer+32),*(float*)(buffer+64), *(float*)(buffer+96), *(float*)(buffer+128), *(float*)(buffer+164), *(float*)(buffer+192), *(int*)(buffer+224));
 //
 // }
-
 void Serialize(const Call* call, char* buffer) { // called on one side
   
   memcpy(buffer, &call->function_enum, sizeof(Command));
