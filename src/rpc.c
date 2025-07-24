@@ -31,7 +31,7 @@ void Serialize(const Call* call, char* buffer) { // called on one side
 }; //This needs to be serialized, then sent, and then freed
 
 void Deserialize(const char* buffer, Call *call) { // called on another side
-  if (*(int*)buffer > last) {
+  if (*(int*)buffer >= last) {
     call->function_enum = last;
   }
   call->function_enum = *(Command*)buffer; //typecast through *Command
