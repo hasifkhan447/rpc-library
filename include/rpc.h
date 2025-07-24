@@ -5,6 +5,7 @@ typedef enum Command {
   run_motor, // arg1: pwm freq, ret: validity
   pid_to_position, // arg1: x, arg2: y, arg3: z, ret1: error_in_pos, ret2: validity
   finger_pos, //TBD not designing for this. Unlikely that we need it, but parallizability might make it useful 
+  last,
 } Command;
 
 

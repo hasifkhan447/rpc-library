@@ -3,6 +3,44 @@
 #include <string.h>
 #include <stdio.h>
 
+
+void PrintSerialized(const char* buffer) {
+
+  printf("%d %f %f %f %f %f %f %d\n", *(Command*)buffer, *(float*)(buffer+32),*(float*)(buffer+64), *(float*)(buffer+96), *(float*)(buffer+128), *(float*)(buffer+164), *(float*)(buffer+192), *(int*)(buffer+224));
+
+}
+
+void Dispatcher(Call* call) { // Only going to be run on the MCU
+  switch(call->function_enum) {
+    case read_sensor:
+      //TODO: extern void read_sensor()
+      //
+      // Assign its output to ret and then reserialize to the other end .
+      break;
+
+    case run_motor:   //currently just running it at a certain speed
+      extern int run_motor_fn(float motor_id, float pwm_frequency);
+      call->ret->err = run_motor_fn(call->args->arg1,call->args->arg2);
+      break;
+
+    case pid_to_position:
+      // TODO: 
+      break;
+
+    case finger_pos:
+      // TODO:
+      break;
+
+
+  }
+}
+
+
+
+
+
+
+
 int main() {
   // ON the nano 
   printf("This is on the nano\n");
@@ -50,7 +88,7 @@ int main() {
   //This is a test
 
   printf("Now I'm sending this to Nano:\n");
-  PrintSerialized(buffer_mcu);
+  // PrintSerialized(buffer_mcu);
   memcpy(buffer, buffer_mcu, sizeof(char[BUF_SIZE]));
 
   free(ret_mcu);
