@@ -2,3 +2,4 @@ test
 test_src/main.o
 *.o
 *.a
+build/*

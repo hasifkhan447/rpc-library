@@ -31,4 +31,4 @@ Now do my stuff
 
 
 
-
+In order to build for python we will need CFFI. setuptools.

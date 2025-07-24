@@ -47,25 +47,25 @@ void Deserialize(const char* buffer, Call *call) { // called on another side
 };
 
 
-void Dispatcher(Call* call) { // Only going to be run on the MCU
-  switch(call->function_enum) {
-    case read_sensor:
-      //TODO: extern void read_sensor()
-      //
-      // Assign its output to ret and then reserialize to the other end .
-      break;
-
-    case run_motor:   //currently just running it at a certain speed
-      extern int run_motor_fn(float motor_id, float pwm_frequency);
-      call->ret->err = run_motor_fn(call->args->arg1,call->args->arg2);
-      break;
-
-    case pid_to_position:
-      // TODO: 
-      break;
-
-    case finger_pos:
-      // TODO:
-      break;
-  }
-}
+// void Dispatcher(Call* call) { // Only going to be run on the MCU
+//   switch(call->function_enum) {
+//     case read_sensor:
+//       //TODO: extern void read_sensor()
+//       //
+//       // Assign its output to ret and then reserialize to the other end .
+//       break;
+//
+//     case run_motor:   //currently just running it at a certain speed
+//       extern int run_motor_fn(float motor_id, float pwm_frequency);
+//       call->ret->err = run_motor_fn(call->args->arg1,call->args->arg2);
+//       break;
+//
+//     case pid_to_position:
+//       // TODO: 
+//       break;
+//
+//     case finger_pos:
+//       // TODO:
+//       break;
+//   }
+// }
