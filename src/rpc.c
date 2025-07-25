@@ -1,5 +1,4 @@
 #include "../include/rpc.h"
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -32,6 +31,7 @@ void Serialize(const Call* call, char* buffer) { // called on one side
 void Deserialize(const char* buffer, Call *call) { // called on another side
   if (*(int*)buffer >= last) {
     call->function_enum = last;
+    return;
   }
   call->function_enum = *(Command*)buffer; //typecast through *Command
   
@@ -41,7 +41,7 @@ void Deserialize(const char* buffer, Call *call) { // called on another side
 
   if (call->ret != 0x0) {
     call->ret->arg1 = *(float*)(buffer+128);
-    call->ret->arg2 = *(float*)(buffer+164);
+    call->ret->arg2 = *(float*)(buffer+160);
     call->ret->arg3 = *(float*)(buffer+192);
 
     call->ret->err = *(int*)(buffer+224);

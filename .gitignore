@@ -3,3 +3,6 @@ test_src/main.o
 *.o
 *.a
 build/*
+src/rpclib_project-stamp/*
+tmp/*
+obj/*
